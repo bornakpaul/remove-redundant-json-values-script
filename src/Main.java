@@ -22,8 +22,8 @@ public class Main {
                 objectNode.fields().forEachRemaining(entry -> {
                     String fieldValue = entry.getValue().asText();
                     // check if the string includes \n or \r and remove it
-                    if(fieldValue.matches(".*((\\r\\n)+).*")){
-                        String newFieldValue = fieldValue.replace("(\\r\\n)+", "").trim();
+                    if(fieldValue.contains("%3$s")){
+                        String newFieldValue = fieldValue.replace("%3$s", "%s").trim();
                         //((ObjectNode) entry.getValue()).put(entry.getKey(), newFieldValue);
                         if (entry.getValue() instanceof ObjectNode) {
                             ((ObjectNode) entry.getValue()).put(entry.getKey(), newFieldValue);
